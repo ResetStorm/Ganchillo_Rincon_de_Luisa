@@ -1,0 +1,475 @@
+/*Creado por ResetStorm Davide Para Luisa con cariño*/
+/*----------------*/
+/* 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+/*------------------------------------------------------------------------*/
+/*Vamos a definir el tamaño para las unidad relativa rem, y cambiar el font-family por defecto */
+
+:root {
+  font-size: 16px;
+}
+
+.parisienne-regular {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*--------------------------------------------*/
+
+body {
+  font-family: "Parisienne", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 20px;
+  background-color: #fff7eb;
+  background-image: url("../assets/madera2.jpg");
+  background-repeat: repeat;
+}
+
+header {
+  color: #000000;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 20px;
+  box-shadow: -5px 5px 10px #00000090;
+  background-image: url("../assets/texturapapel1.jpg");
+  background-repeat: repeat;
+}
+header h1 {
+  display: inline-block;
+}
+header p {
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Menú principal */
+nav.menu {
+  background: #fff3e0;
+  box-shadow: 0 4px 5px #0000001a;
+  position: sticky;
+  top: 120px;
+  z-index: 1;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu li {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000000;
+
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 15px 10px;
+  display: block;
+}
+
+.menu li:hover {
+  transform: scale(1.1);
+}
+
+.menu li:hover a {
+  color: #000000;
+  background-color: #9ccdc2;
+
+  text-shadow: -5px 5px 10px #00000075;
+}
+
+.menu li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #7bb1a4;
+  transition: width 0.4s ease;
+}
+
+.menu li:hover::after {
+  width: 80%;
+}
+
+/* Icono de menú hamburguesa (visible en móvil) */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 135px;
+  right: 20px;
+  z-index: 1001;
+  cursor: pointer;
+  padding: 10px;
+  background: #ffca74;
+  box-shadow: -5px 5px 5px #00000075;
+  border-radius: 4px;
+}
+
+.hamburger,
+.close-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger span,
+.close-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000000;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+.close-icon {
+  display: none;
+}
+.close-icon span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 12px;
+}
+.close-icon span:nth-child(2) {
+  transform: rotate(-45deg);
+  top: 12px;
+}
+
+/* Menú móvil */
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked ~ .menu ul {
+  transform: translateY(0);
+}
+
+#menu-toggle:checked ~ .menu-toggle .hamburger {
+  display: none;
+}
+#menu-toggle:checked ~ .menu-toggle .close-icon {
+  display: block;
+}
+
+@media (max-width: 2000px) {
+  .menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 0;
+    position: fixed;
+    top: 160px;
+    right: -100%;
+    width: 250px;
+    border-radius: 0.5rem;
+    background: #ffe2b4;
+    background-image: url("../assets/texturapapel2.jpg");
+    background-repeat: repeat;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.75);
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  #menu-toggle:checked ~ .menu ul {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .galeria-container {
+    margin-top: 80px;
+  }
+}
+
+/* Galería */
+.galeria-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+/*------------------------inicio modificación David--------------------*/
+.galeria-container a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
+/*------------------------fin modificación David--------------------*/
+.thumbnail {
+  color: #000000;
+  background-color: #ffe7c0;
+  background-image: url("../assets/texturapapel1.jpg");
+  background-repeat: repeat;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: -5px 5px 5px #00000050;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: translateY(-5px);
+  background-color: #f4ce91;
+  box-shadow: -5px -5px 15px 15px #00000050;
+  animation: saturacion 2s ease-in-out infinite alternate both;
+}
+
+.thumbnail img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  object-fit: cover;
+}
+@keyframes saturacion {
+  0% {
+    filter: saturate(1);
+  }
+
+  50% {
+    filter: saturate(2);
+  }
+
+  100% {
+    filter: saturate(1);
+  }
+}
+
+.info {
+  padding: 15px;
+}
+
+.nombre {
+  font-size: 1.4rem;
+  color: #000000;
+  margin: 0 0 8px;
+}
+
+.descripcion {
+  color: #000000;
+  font-size: 1rem;
+}
+
+/* Carousel */
+#carousel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000cc;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#carousel:target {
+  display: flex;
+}
+
+.carousel-content {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 30px;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.carousel-item {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.carousel-img {
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.carousel-text {
+  margin-top: 20px;
+}
+
+.carousel-nombre {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.carousel-descripcion {
+  font-size: 1em;
+  margin: 10px 0 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 2em;
+  text-decoration: none;
+}
+/* cambios 20-07-2025  */
+
+/* Qué hace cada bloque del código que viene a continuación
+
+   1. Ocultar: quitamos el display: none de #carousel:target y, en cambio, ocultamos todo de partida.
+
+   2. Modal por slide: cuando la URL es #img1 o #img2, el selector .carousel-item:target corresponderá justo al <div id="img1" class="carousel-item"> (o img2) y lo mostramos como modal fullscreen.
+
+   3. Estilos internos: centramos y limitamos el tamaño de la imagen y el texto.
+
+   4. Cerrar: el enlace <a href="#" class="close-btn">×</a> vuelve a un fragment vacío y por tanto “des‑targetea” el slide, que vuelve a display: none.
+
+*/
+
+/* 1) Oculta por defecto todo el carousel global y cada slide */
+#carousel {
+  display: none;
+}
+.carousel-item {
+  display: none;
+}
+
+/* 2) Cuando un slide recibe el foco de URL (fragment #imgX), lo convertimos en modal */
+.carousel-item:target {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* 3) Ajusta la imagen y el texto dentro del slide */
+.carousel-item:target .carousel-img {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+.carousel-item:target .carousel-text {
+  margin-top: 1rem;
+  text-align: center;
+  color: #fff;
+}
+
+/* 4) Botón de cierre: devuelve el fragment a vacío (#) */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+}
+.close-btn:hover {
+  color: #ffca74;
+}
+
+/* Codigo a continuación 
+¿Qué ocurre al hacer clic?
+
+    1.El enlace <a href="#img1"> añade #img1 a la URL.
+
+    2.El selector .carousel-item:target detecta que el elemento con id="img1" está activo y le da display: flex, convirtiéndolo en un modal centrado.
+
+    3.El botón de cierre (<a href="#" class="close-btn">×</a>) quita el fragmento (#img1), de modo que ningún .carousel-item coincide con :target y todos vuelven a display: none.
+*/
+
+/* 1) Oculta todos los slides por defecto */
+.carousel-item {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* 2) Cuando el fragmento coincide con #imgX, muéstralo */
+.carousel-item:target {
+  display: flex;
+}
+
+/* 3) Cierre */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+}
+.close-btn:hover {
+  color: #ffca74;
+}
+
+/* 4) Estilos de la imagen y del texto dentro del modal */
+.carousel-img {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+.carousel-text {
+  margin-top: 1rem;
+  text-align: center;
+  color: #fff;
+}
